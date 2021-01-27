@@ -773,8 +773,8 @@ A type implements any interface comprising any subset of its methods and may the
 Similarly, consider this interface specification, which appears within a [type declaration](#type-declarations) to define an interface called `Locker`:
 ```
 (type (Locker (interface 
-                 (Lock)
-                 (Unlock))))
+                (Lock)
+                (Unlock))))
 ```
 
 If `S1` and `S2` also implement
@@ -976,7 +976,7 @@ x                   T           x not representable by a value of T because
 1e1000              float64     1e1000 overflows to IEEE +Inf after rounding
 ```
 
-## Blocks [Blocks]
+## Blocks
 
 A _block_ is a possibly empty sequence of declarations and statements.
 
@@ -1248,8 +1248,8 @@ The new type is called a _defined type_. It is [different](#type-identity) from 
 
 (type (Block (interface
                (BlockSize () ((_ int)))
-	           (Encrypt (((src dst) (slice byte))))
-	           (Decrypt (((src dst) (slice byte)))))))
+               (Encrypt (((src dst) (slice byte))))
+               (Decrypt (((src dst) (slice byte)))))))
 ```
 
 A defined type may have [methods](#method-declarations) associated with it. It does not inherit any methods bound to the given type, but the [method set](#method-sets) of an interface type or of elements of a composite type remains unchanged:
@@ -1529,8 +1529,8 @@ Examples of valid array, slice, and map literals:
 
 ;; frequencies in Hz for equal-tempered scale (A4 = 440Hz)
 (:= noteFrequency (make-map (map string float32)
-	                "C0" 16.35 "D0" 18.35 "E0" 20.60 "F0" 21.83
-	                "G0" 24.50 "A0" 27.50 "B0" 30.87))
+                    "C0" 16.35 "D0" 18.35 "E0" 20.60 "F0" 21.83
+                    "G0" 24.50 "A0" 27.50 "B0" 30.87))
 ```
 
 ### Function literals
@@ -1619,9 +1619,9 @@ For example, given the declarations:
 (func ((_ T1)) M1 () ())
 
 (type (T2 (struct
-	        (z :type int)
-	        (T1)
-	        ((* T0)))))
+            (z :type int)
+            (T1)
+            ((* T0)))))
 
 (func ((_ (* T2))) M2 () ())
 
@@ -2082,7 +2082,7 @@ with `(/ x y)` truncated towards zero (["truncated division"](https://en.wikiped
 
 The one exception to this rule is that if the dividend `x` is the most negative value for the int type of `x`, the quotient `(= q (/ x -1))` is equal to `x` (and `(= r 0)`) due to two's-complement [integer overflow](#integer-overflow):
 ```
-			             x, q
+                         x, q
 int8                     -128
 int16                  -32768
 int32             -2147483648
@@ -2289,16 +2289,16 @@ A non-constant value `x` can be converted to type `T` in any of these cases:
 [Struct tags](#struct-types) are ignored when comparing struct types for identity for the purpose of conversion:
 ```
 (type (Person (struct
-	            (Name :type string)
-	            (Address :type (* (struct
-		                            (Street :type string)
-		                            (City :type string)))))))
+                (Name :type string)
+                (Address :type (* (struct
+                                    (Street :type string)
+                                    (City :type string)))))))
 
 (var (data :type (* (struct
-	                  (Name :type string :tag #`json:"name"`)
-	                  (Address :type (* (struct
-		                                  (Street :type string :tag #`json:"street"`)
-		                                  (City :type string :tag #`json:"city"`)))
+                      (Name :type string :tag #`json:"name"`)
+                      (Address :type (* (struct
+                                          (Street :type string :tag #`json:"street"`)
+                                          (City :type string :tag #`json:"city"`)))
                                :tag #`json:"address"`))
 
 (var (person := (convert data (* Person)))) ; ignoring tags, the underlying types are identical
@@ -2772,11 +2772,11 @@ could be rewritten:
           (:= (_ isString) (assert v string))
 	      (if (|| isBool isString)
             (begin
-		      (:= i v)                                                      ; type of i is type of x
-		      (printString "type is bool or string"))
+              (:= i v)                                                      ; type of i is type of x
+              (printString "type is bool or string"))
             (begin
-		      (:= i v)                                                      ; type of i is type of x
-		      (printString "don't know the type"))))))))
+              (:= i v)                                                      ; type of i is type of x
+              (printString "don't know the type"))))))))
 ```
 
 The type-switch* guard is preceded by a simple statement, which executes before the guard is evaluated.
@@ -3376,7 +3376,7 @@ If an `(unquote` _expression_`)` form appears inside _datum_, however, the expre
 
 If an `(unquote-splicing` _expression_`)` form appears inside _datum_, then the expression must evaluate to a list; the opening and closing parentheses of the list are then "stripped away" and the elements of the list are inserted in place of the `unquote-splicing` form. Any `unquote-splicing` form must appear only within a list _datum_.
 
-* `(quasiquote` _datum_`)` may be abbreviated as `_datum_.
+* `(quasiquote` _datum_`)` may be abbreviated as `` ` ``_datum_.
 * `(unquote` _expression_`)` may be abbreviated as `,`_expression_.
 * `(unquote-splicing` _expresssion_`)` may be abbreviated as `,@`_expression_.
 
@@ -3502,7 +3502,7 @@ It is, however, legal for a plugin to declare a quoted use of itself, and return
   (if (== bindings (list:Nil))
     (return (values `(begin ,@body) nil))
     (begin
-	  (:= firstBinding (list:Car bindings))
+      (:= firstBinding (list:Car bindings))
       (:= restBindings (list:Cdr bindings))
       (return (values 
                 `(begin
