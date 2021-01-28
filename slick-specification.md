@@ -3491,12 +3491,11 @@ It is, however, legal for a plugin to declare a quoted use of itself, and return
   "github.com/exascience/slick/list"
   "github.com/exascience/slick/compiler")
 
-(use
-  '(bindings "github.com/exascience/bindings"
-    "This main package is located in the bindings folder."))
+(use '(b "github.com/exascience/bindings"
+        "This main package is located in the bindings folder."))
 
-(func LetStar ((form (* list:Pair)) (_ compiler.Environment))
-              ((newForm (* list:Pair)) (_ error))
+(func LetStar ((form (* list:Pair)) (_ compiler:Environment))
+              ((newForm (interface)) (_ error))
   (:= bindings (list:Cadr form))
   (:= body (list:Cddr form))
   (if (== bindings (list:Nil))
@@ -3504,10 +3503,10 @@ It is, however, legal for a plugin to declare a quoted use of itself, and return
     (begin
       (:= firstBinding (list:Car bindings))
       (:= restBindings (list:Cdr bindings))
-      (return (values 
+      (return (values
                 `(begin
-                   (var ,(list:Car firstBinding) := ,(list:Cadr firstBinding))
-                   (bindings:LetStar (,@restBindings) ,@body))
+                   (var (,(list:Car firstBinding) := ,(list:Cadr firstBinding)))
+                   (b:LetStar (,@restBindings) ,@body))
                 nil)))))
 ```
 
