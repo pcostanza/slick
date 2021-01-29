@@ -72,10 +72,8 @@ Let's say you want to implement a library for Lisp/Scheme-style binding forms. H
 ```
     (package bindings)
 
-    (import "github.com/exascience/slick/list")
-
-    (func SplitPair ((p (* list:Pair))) (((car cdr) (interface)))
-      (return (values (slot p Car) (slot p Cdr))))
+    (func Bind ((f (func ((x (interface))))) (x (interface))) ()
+      (f x))
 ```
 
 * Compile the Slick code to Go: `slick bind.slick bind.go`.
@@ -89,22 +87,23 @@ Let's say you want to implement a library for Lisp/Scheme-style binding forms. H
     (import
       "github.com/exascience/slick/list"
       "github.com/exascience/slick/compiler"
-      '(bindings "github.com/exascience/bindings"))
+      '(bl "github.com/exascience/bindings"))
 
-    (use '(b "github.com/exascience/bindings"))
+    (use '(bp "github.com/exascience/bindings"))
 
     (func LetStar ((form (* list:Pair)) (_ compiler:Environment))
                   ((newForm (interface)) (_ error))
       (:= bindings (list:Cadr form))
       (:= body (list:Cddr form))
       (if (== bindings (list:Nil))
-        (return (values `(begin ,@body) nil))
+        (return (values `(splice ,@body) nil))
         (begin
-          (:= (firstBinding restBindings) (bindings:SplitPair (assert bindings (* list:Pair))))
+          (:= firstBinding (list:Car bindings))
+          (:= restBindings (list:Cdr bindings))
           (return (values
-                    `(begin
-                       (var (,(list:Car firstBinding) := ,(list:Cadr firstBinding)))
-                       (b:LetStar (,@restBindings) ,@body))
+                    `(bl:Bind (func ((,(list:Car firstBinding) (interface))) ()
+                                (bp:LetStar (,@restBindings) ,@body))
+                              ,(list:Cadr firstBinding))
                     nil)))))
 ```
 
