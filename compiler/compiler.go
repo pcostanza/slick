@@ -1979,8 +1979,18 @@ func (cmp *compiler) compileFile() []byte {
 	return result
 }
 
-func Compile(rd *reader.Reader) ([]byte, error) {
+func Compile(rd *reader.Reader) (result []byte, err error) {
 	var cmp compiler
+	defer func() {
+		e := recover()
+		if e == nil {
+			return
+		}
+		if _, ok := e.(bailout); !ok {
+			panic(e)
+		}
+		err = cmp.reader.Errors.Err()
+	}()
 	cmp.init(rd)
 	return cmp.compileFile(), cmp.reader.Errors.Err()
 }

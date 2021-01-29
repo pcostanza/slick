@@ -12,25 +12,30 @@ import (
 func main() {
 	in, err := reader.NewReader(nil, os.Args[1], nil, nil)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	output, err := compiler.Compile(in)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	out, err := os.Create(os.Args[2])
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	if _, err = out.Write(output); err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	if err = out.Close(); err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 	fmt.Println("done")
 }

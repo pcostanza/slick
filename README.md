@@ -53,7 +53,7 @@ You can build the core Slick compiler just by issuing `go build` in the main fol
 The core Slick plugin provides implementations for quotation and quasiquotation as a built-in set of macros implemented in Slick itself. Therefore, you first need to build the Slick compiler before you can compile the Slick plugin. Proceed as follows:
 
 * Change to the directory `lib/slick`.
-* Compile the Slick plugin to go using the slick compiler: `slick plugin.slick plugin.go`.
+* Compile the Slick plugin to Go using the Slick compiler: `slick plugin.slick plugin.go`.
 * [Optional] Format the code to make it look nicer: `go fmt plugin.go`.
 * Build the Slick plugin: `go build -buildmode=plugin plugin.go`.
 * Change back to the root folder: `../..`.
