@@ -774,7 +774,7 @@ func (cmp *compiler) compileFuncDecl(result []byte, form *list.Pair) []byte {
 	}
 
 	result = cmp.compileBlock(result, form, rest)
-	return append(result, '\n')
+	return append(result, '\n', '\n')
 }
 
 func (cmp *compiler) compilePragma(result []byte, form *list.Pair) []byte {
@@ -1091,11 +1091,11 @@ func (cmp *compiler) compileBlock(result []byte, outer, form *list.Pair) []byte 
 	if form == list.Nil() {
 		return append(result, '{', '}', ' ')
 	}
-	result = append(result, '{', '\n')
+	result = append(result, '{')
 	form.ForEach(func(element interface{}) {
 		result = cmp.compileStatement(result, outer, element, false)
 	})
-	return append(result, '}', '\n')
+	return append(result, '}')
 }
 
 func (cmp *compiler) compileSimpleStatement(result []byte, form *list.Pair) []byte {
