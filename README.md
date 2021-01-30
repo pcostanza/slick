@@ -147,8 +147,12 @@ Other things to do:
 * Add static type checks, semantic analysis, and support for compiler environments directly into the Slick compiler.
 * Add support for building complete packages rather than single files.
 * Get rid of `SLICKROOT` and `SLICKPATH`, and embed Slick into the Go module system somehow.
-* Add support for local macros (`macrolet`), which will actually require to also implement an interpreter for Slick.
+* Add a mode for Emacs, Goland, or other editors.
+* Add support for local macros (`macrolet`).
+* Implement an interpreter for Slick.
 * Stress-test the compiler, try out all the language features, see if they work well and are easy to read and write.
 * Write some tutorials, example code, better documentation, etc.
+
+A discussion forum to discuss Slick would probably also be helpful.
 
 If you want to help with any of this, you are very welcome. Feel free to contact me at pascal dot costanza at imec dot be
