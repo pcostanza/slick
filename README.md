@@ -155,6 +155,9 @@ Other things to do:
 * Stress-test the compiler, try out all the language features, see if they work well and are easy to read and write.
 * Write some tutorials, example code, better documentation, etc.
 
-A discussion forum to discuss Slick would probably also be helpful.
-
 If you want to help with any of this, you are very welcome. Feel free to contact me at pascal dot costanza at imec dot be
+
+## Community
+
+* [Mail list / discussion forum](http://groups.google.com/group/slicklang) (Google Groups)
+
