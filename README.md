@@ -144,7 +144,7 @@ The next step is to make sure that user-defined read tables can be used in sourc
 
 Other things to do:
 
-* Add a variant of destructing-bind or destructuring-case to aid in macro programming.
+* Add a variant of destructuring-bind or destructuring-case to aid in macro programming.
 * Add static type checks, semantic analysis, and support for compiler environments directly into the Slick compiler.
 * Add support for building complete packages rather than single files.
 * Get rid of `SLICKROOT` and `SLICKPATH`, and embed Slick into the Go module system somehow.
