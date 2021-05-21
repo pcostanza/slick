@@ -1,3 +1,3 @@
-module github.com/exascience/slick
+module github.com/pcostanza/slick
 
-go 1.15
+go 1.16

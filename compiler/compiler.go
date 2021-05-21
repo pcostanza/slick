@@ -12,9 +12,9 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/exascience/slick/lib"
-	"github.com/exascience/slick/list"
-	"github.com/exascience/slick/reader"
+	"github.com/pcostanza/slick/lib"
+	"github.com/pcostanza/slick/list"
+	"github.com/pcostanza/slick/reader"
 )
 
 type (
@@ -1824,7 +1824,7 @@ func (cmp *compiler) compileExpr(result []byte, form *list.Pair, element interfa
 			return append(result, fmt.Sprintf("%q", e)...)
 		case *list.Pair:
 			if e == nil {
-				sym := cmp.encloseSymbol(lib.Intern("github.com/exascience/slick/list", "Nil"))
+				sym := cmp.encloseSymbol(lib.Intern("github.com/pcostanza/slick/list", "Nil"))
 				result = append(result, sym.Package...)
 				result = append(result, '.')
 				result = append(result, sym.Identifier...)

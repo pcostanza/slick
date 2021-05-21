@@ -3,7 +3,7 @@ package list_test
 import (
 	"testing"
 
-	"github.com/exascience/slick/list"
+	"github.com/pcostanza/slick/list"
 )
 
 func TestString(t *testing.T) {

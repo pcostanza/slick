@@ -66,7 +66,7 @@ A library typically consists of some runtime support functions and some compile-
 Let's say you want to implement a library for Lisp/Scheme-style binding forms. Here is a step-by-step guide how to do this:
 
 * Create a folder `bindings` and change to it.
-* Create a `go.mod` file for the Go module system. In our example, we add only one line: `module github.com/exascience/bindings`. Feel free to use your own package name and location.
+* Create a `go.mod` file for the Go module system. In our example, we add only one line: `module github.com/pcostanza/bindings`. Feel free to use your own package name and location.
 * Create a file `bind.slick` with the following contents. (This is not a very useful library, but provided only for illustration.)
 
 ```
@@ -85,11 +85,11 @@ Let's say you want to implement a library for Lisp/Scheme-style binding forms. H
     (package main)
 
     (import
-      "github.com/exascience/slick/list"
-      "github.com/exascience/slick/compiler"
-      '(bl "github.com/exascience/bindings"))
+      "github.com/pcostanza/slick/list"
+      "github.com/pcostanza/slick/compiler"
+      '(bl "github.com/pcostanza/bindings"))
 
-    (use '(bp "github.com/exascience/bindings"))
+    (use '(bp "github.com/pcostanza/bindings"))
 
     (func LetStar ((form (* list:Pair)) (_ compiler:Environment))
                   ((newForm (interface)) (_ error))
@@ -124,15 +124,15 @@ Let's try to use the bindings library in an example project.
 
     (import "fmt")
 
-    (use "github.com/exascience/bindings")
+    (use "github.com/pcostanza/bindings")
 
     (func main () ()
       (bindings:LetStar ((x "Hello, World!"))
         (fmt:Println x)))
 ```
 
-* Create a folder for storing the `bindings` plugin that we want to use in this code: `mkdir -p plugins/github.com/exascience/bindings/slick`.
-* Copy the plugin from above into this folder: `cp ~/develop/go/bindings/slick/plugin.so plugins/github.com/exascience/bindings/slick`.
+* Create a folder for storing the `bindings` plugin that we want to use in this code: `mkdir -p plugins/github.com/pcostanza/bindings/slick`.
+* Copy the plugin from above into this folder: `cp ~/develop/go/bindings/slick/plugin.so plugins/github.com/pcostanza/bindings/slick`.
 * Set the `SLICKPATH` environment variable to the current folder, so that the `bindings` plugin can be found: `export SLICKPATH=.`.
 * Compile the Slick code to Go: `slick hello.slick hello.go`.
 * [Optional] Format the code to make it look nicer: `go fmt hello.go`.

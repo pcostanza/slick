@@ -2,19 +2,19 @@
 
 (import	"errors"
 				"fmt"
-				"github.com/exascience/slick/lib"
-				"github.com/exascience/slick/list"
-				"github.com/exascience/slick/compiler")
+				"github.com/pcostanza/slick/lib"
+				"github.com/pcostanza/slick/list"
+				"github.com/pcostanza/slick/compiler")
 
 (var (sampersand := (lib:Intern "" "&"))
-		 (sappend := (lib:Intern "github.com/exascience/slick/list" "Append"))
+		 (sappend := (lib:Intern "github.com/pcostanza/slick/list" "Append"))
 		 (scar := (lib:Intern "" "Car"))
 		 (scdr := (lib:Intern "" "Cdr"))
-		 (scons := (lib:Intern "github.com/exascience/slick/list" "Cons"))
-     (sintern := (lib:Intern "github.com/exascience/slick/lib" "Intern"))
-		 (slist := (lib:Intern "github.com/exascience/slick/list" "List"))
+		 (scons := (lib:Intern "github.com/pcostanza/slick/list" "Cons"))
+     (sintern := (lib:Intern "github.com/pcostanza/slick/lib" "Intern"))
+		 (slist := (lib:Intern "github.com/pcostanza/slick/list" "List"))
 		 (smakeStruct := (lib:Intern "" "make-struct"))
-		 (spair := (lib:Intern "github.com/exascience/slick/list" "Pair"))
+		 (spair := (lib:Intern "github.com/pcostanza/slick/list" "Pair"))
   	 (squasiquote := (lib:Intern "" "quasiquote"))
 		 (squote := (lib:Intern "" "quote"))	
 		 (sunquote := (lib:Intern "" "unquote"))

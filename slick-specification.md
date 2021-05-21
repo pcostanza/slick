@@ -3469,8 +3469,8 @@ The PackageName is used in [qualified identifiers](#qualified-identifiers) to in
 Macro functions exported from a plugin must adhere to the following type:
 ```
 (import
-  "github.com/exascience/slick/list"
-  "github.com/exascience/slick/compiler")
+  "github.com/pcostanza/slick/list"
+  "github.com/pcostanza/slick/compiler")
 
 (func ((form (* list:Pair)) (env compiler:Environment)) ((newForm (interface)) (err error)))
 ```
@@ -3488,10 +3488,10 @@ It is, however, legal for a plugin to declare a quoted use of itself, and return
                 and Go plugins are created from main packages`)
 
 (import
-  "github.com/exascience/slick/list"
-  "github.com/exascience/slick/compiler")
+  "github.com/pcostanza/slick/list"
+  "github.com/pcostanza/slick/compiler")
 
-(use '(b "github.com/exascience/bindings"
+(use '(b "github.com/pcostanza/bindings"
         "This main package is located in the bindings folder."))
 
 (func LetStar ((form (* list:Pair)) (_ compiler:Environment))
@@ -3680,7 +3680,7 @@ Execution errors such as attempting to index an array out of bounds trigger a _r
 
 ### Package lib
 
-The built-in package `github.com/exascience/slick/lib` - in the rest of this specification referred to as just `lib` - is known to the compiler and accessible through the [import path](#import-declarations) `"github.com/exascience/slick/lib"`. It provides facilities for handling _symbols_, which are primarily useful for macro programming, but also may have other uses. The package provides the following interface:
+The built-in package `github.com/pcostanza/slick/lib` - in the rest of this specification referred to as just `lib` - is known to the compiler and accessible through the [import path](#import-declarations) `"github.com/pcostanza/slick/lib"`. It provides facilities for handling _symbols_, which are primarily useful for macro programming, but also may have other uses. The package provides the following interface:
 ```
 (package lib)
 
@@ -3717,7 +3717,7 @@ Since `Gensym` uses a unique integer value as part of the `Identifier`, subseque
 
 ### Package list
 
-The built-in package `github.com/exascience/slick/list` - in the rest of this specification referred to as just `list` - is known to the compiler and accessible through the [import path](#import-declarations) `"github.com/exascience/slick/list"`. It provides facilities for handling Lisp/Scheme-style _pairs_ and _lists_. See the package documentation of that package for more details.
+The built-in package `github.com/pcostanza/slick/list` - in the rest of this specification referred to as just `list` - is known to the compiler and accessible through the [import path](#import-declarations) `"github.com/pcostanza/slick/list"`. It provides facilities for handling Lisp/Scheme-style _pairs_ and _lists_. See the package documentation of that package for more details.
 
 ### Package unsafe
 

@@ -44,8 +44,8 @@ import (
 	"go/scanner"
 	"go/token"
 
-	"github.com/exascience/slick/lib"
-	"github.com/exascience/slick/list"
+	"github.com/pcostanza/slick/lib"
+	"github.com/pcostanza/slick/list"
 )
 
 type (

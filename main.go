@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/exascience/slick/reader"
+	"github.com/pcostanza/slick/reader"
 
-	"github.com/exascience/slick/compiler"
+	"github.com/pcostanza/slick/compiler"
 )
 
 func main() {
